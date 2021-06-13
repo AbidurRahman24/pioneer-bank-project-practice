@@ -3,13 +3,8 @@ addDesposit.addEventListener("click", () => {
   const depositCurrence = Number(document.getElementById("depositCurrence").value);
 
   if (depositCurrence > 0) {
-    const depositAmount = Number(document.getElementById("depositAmount").innerText);
-    const totalDeposit = depositCurrence + depositAmount;
-    document.getElementById("depositAmount").innerText = totalDeposit;
-
-    const balance = Number(document.getElementById("balance").innerText);
-    const totalBalance = totalDeposit + balance;
-    document.getElementById("balance").innerText = totalBalance;
+    sumInput('depositAmount', depositCurrence)
+    sumInput('balance', depositCurrence )
   }
   
   document.getElementById("depositCurrence").value = "";
@@ -21,13 +16,8 @@ const withDrawBtn = document.getElementById("withDrawBtn")
 withDrawBtn.addEventListener('click', ()=>{
   const withDrawCurrency = Number(document.getElementById("withDrawCurrency").value);
   if(withDrawCurrency > 0){
-  const withDrawAmount = Number(document.getElementById("withDrawAmount").innerText);
-  const total = withDrawCurrency + withDrawAmount;
-  document.getElementById("withDrawAmount").innerText = total;
-
-  const balance = Number(document.getElementById("balance").innerText)
-  const totalBalance = balance - total;
-  document.getElementById("balance").innerText = totalBalance;
+  sumInput('withDrawAmount', withDrawCurrency)
+  sumInput('balance', -1 *withDrawCurrency)
   }
 
 
@@ -35,6 +25,22 @@ withDrawBtn.addEventListener('click', ()=>{
 })
 
 
-const sumInput = () =>{
-  
+const sumInput = (id, totalDeposit) =>{
+  const balance = Number(document.getElementById(id).innerText);
+      const totalBalance = totalDeposit + balance;
+      document.getElementById(id).innerText = totalBalance;
 }
+
+
+
+
+
+
+      // const balance = Number(document.getElementById("balance").innerText);
+      // const totalBalance = totalDeposit + balance;
+      // document.getElementById("balance").innerText = totalBalance;
+
+      
+    // const depositAmount = Number(document.getElementById("depositAmount").innerText);
+    // const totalDeposit = depositCurrence + depositAmount;
+    // document.getElementById("depositAmount").innerText = totalDeposit;
